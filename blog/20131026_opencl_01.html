@@ -1,0 +1,936 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>opencl_01</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+</head>
+<body>
+<h1>OpenCL学习笔记——OpenCL程序基本流程</h1>
+<blockquote>
+<p>2013/10/26 </p>
+<p><strong><em>keyring</em></strong> · <a href="&#x6d;&#x61;&#105;&#x6c;&#116;&#x6f;&#58;&#107;&#101;&#121;&#x72;&#105;&#110;&#x67;&#115;&#x40;&#49;&#x36;&#x33;&#x2e;&#x63;&#111;&#109;">&#107;&#x65;&#121;r&#x69;&#x6e;g&#115;&#64;&#x31;&#54;&#51;&#46;&#x63;&#111;&#x6d;</a></p>
+<p>OpenCL</p>
+</blockquote>
+<p>OpenCL作为一门开源的异构并行计算语言，设计之初就是使用一种模型来模糊各种硬件差异。作为软件开发人员，我们关注的就是它的编程模型。OpenCL程序的流程大致如下：</p>
+<ul>
+<li>
+<strong><a href="#Platform">Platform</a></strong>
+<ul>
+<li><a href="#platform">查询并选择一个 platform</a></li>
+<li><a href="#context">在 platform 上创建 context</a></li>
+<li><a href="#device">在 context 上查询并选择一个或多个 device</a></li>
+</ul>
+</li>
+<li>
+<strong><a href="#running">Running time</a></strong>
+<ul>
+<li><a href="#program">加载 OpenCL 内核程序并创建一个 program 对象</a></li>
+<li><a href="#build">为指定的 device 编译 program 中的 kernel</a></li>
+<li><a href="#kernel">创建指定名字的 kernel 对象</a></li>
+<li><a href="#memory">为 kernel 创建内存对象</a></li>
+<li><a href="#arg">为 kernel 设置参数</a></li>
+<li><a href="#createcommand">在指定的 device 上创建 command queue</a></li>
+<li><a href="#execommand">将要执行的 kernel 放入 command queue</a></li>
+<li><a href="#return">将结果读回 host</a></li>
+</ul>
+</li>
+<li><strong><a href="#free">资源回收</a></strong></li>
+<li><strong><a href="#jie">总结</a></strong></li>
+<li><strong><a href="#code">示例代码</a></strong></li>
+</ul>
+<p>下面我们通过一个具体的示例程序来说明这些步骤。</p>
+<p>使用 OpenCL API 编程与一般 C/C++ 引入第三方库编程没什么区别。所以，首先要做的自然是 include 相关的头文件。由于在 MacOS X 10.6下OpenCL的头文件命名与其他系统不同，通常使用一个<code>#if defined</code>进行区分，代码如下：</p>
+<pre><code>#if defined(__APPLE__) || defined(__MACOSX)
+#include &lt;OpenCL/cl.hpp&gt;
+#else
+#include &lt;CL/cl.h&gt;
+#endif
+</code></pre>
+
+<p>接下来我们就进入真正的编码流程了。</p>
+<h2><span id="Platform">Platform</span></h2>
+<h3><span id="platform">查询并选择一个 platform</span></h3>
+<p>首先我们要取得系统中所有的 OpenCL platform。所谓的 platform 指的就是硬件厂商提供的 OpenCL 框架，不同的 CPU/GPU 开发商（比如 Intel、AMD、Nvdia）可以在一个系统上分别定义自己的 OpenCL 框架。所以我们需要查询系统中可用的 OpenCL 框架，即 platform。使用 API 函数 <code>clGetPlatformIDs</code> 获取可用 platform 的数量：</p>
+<pre><code>cl_int status = 0;
+cl_uint numPlatforms;
+cl_platform_id platform = NULL;
+status = clGetPlatformIDs( 0, NULL, &amp;numPlatforms);
+
+if(status != CL_SUCCESS){
+    printf(&quot;Error: Getting Platforms\n&quot;);
+    return EXIT_FAILURE;
+}
+</code></pre>
+
+<p>然后根据数量来分配内存，并得到所有可用的 platform，所使用的 API 还是 <code>clGetPlatformIDs</code>。在 OpenCL 中，类似这样的函数调用很常见：第一次调用以取得数目，便于分配足够的内存；然后调用第二次以获取真正的信息。</p>
+<pre><code>if (numPlatforms &gt; 0) {
+    cl_platform_id *platforms = (cl_platform_id *)malloc(numPlatforms * sizeof(cl_platform_id));
+    status = clGetPlatformIDs(numPlatforms, platforms, NULL);
+    if (status != CL_SUCCESS) {
+        printf(&quot;Error: Getting Platform Ids.(clGetPlatformIDs)\n&quot;);
+        return -1;
+    }
+</code></pre>
+
+<p>现在，所有的 platform 都存在了变量 <code>platforms</code> 中，接下来需要做的就是取得我们所需的 platform。本人的PC上配置的是 Intel 处理器和 AMD 显卡，专业点的说法叫 Intel 的 CPU 和 AMD 的 GPU :)。所以我这儿有两套 platform，为了体验下 GPU 的快感，所以使用 AMD 的 platform。通过使用 <code>clGetPlatformInfo</code> 来获得 platform 的信息。通过这个 API 可以知晓 platform 的厂商信息，以便我们选出需要的 platform。代码如下：</p>
+<pre><code>for (unsigned int i = 0; i &lt; numPlatforms; ++i) {
+        char pbuff[100];
+        status = clGetPlatformInfo(
+                     platforms[i],
+                     CL_PLATFORM_VENDOR,
+                     sizeof(pbuff),
+                     pbuff,
+                     NULL);
+        platform = platforms[i];
+        if (!strcmp(pbuff, &quot;Advanced Micro Devices, Inc.&quot;)) {
+            break;
+        }
+    }
+</code></pre>
+
+<p>不同的厂商信息可以参考 <code>OpenCL Specifications</code>，我这儿只是简单的筛选出 AMD 。</p>
+<h3><span id="context">在 platform 上建立 context </span></h3>
+<p>第一步是通过 platform 得到相应的 context properties</p>
+<pre><code>// 如果我们能找到相应平台，就使用它，否则返回NULL
+cl_context_properties cps[3] = {
+    CL_CONTEXT_PLATFORM,
+    (cl_context_properties)platform,
+    0
+};
+
+cl_context_properties *cprops = (NULL == platform) ? NULL : cps;
+</code></pre>
+
+<p>第二步是通过 <code>clCreateContextFromType</code> 函数创建 context。</p>
+<pre><code>// 生成 context
+cl_context context = clCreateContextFromType(
+                         cprops,
+                         CL_DEVICE_TYPE_GPU,
+                         NULL,
+                         NULL,
+                         &amp;status);
+if (status != CL_SUCCESS) {
+    printf(&quot;Error: Creating Context.(clCreateContexFromType)\n&quot;);
+    return EXIT_FAILURE;
+}
+</code></pre>
+
+<p>函数的第二个参数可以设定 context 关联的设备类型。本例使用的是 CPU 作为OpenCL计算设备。目前可以使用的类别包括：</p>
+<pre><code>- CL_DEVICE_TYPE_CPU
+- CL_DEVICE_TYPE_GPU
+- CL_DEVICE_TYPE_ACCELERATOR
+- CL_DEVICE_TYPE_DEFAULT
+- CL_DEVICE_TYPE_ALL
+</code></pre>
+
+<h3><span id="device">在 context 上查询 device </span></h3>
+<p>context 创建好之后，要做的就是查询可用的 device。</p>
+<pre><code>status = clGetContextInfo(context,
+                          CL_CONTEXT_DEVICES,
+                          0,
+                          NULL,
+                          &amp;deviceListSize);
+if (status != CL_SUCCESS) {
+    printf(&quot;Error: Getting Context Info device list size, clGetContextInfo)\n&quot;);
+    return EXIT_FAILURE;
+}
+cl_device_id *devices = (cl_device_id *)malloc(deviceListSize);
+if (devices == 0) {
+    printf(&quot;Error: No devices found.\n&quot;);
+    return EXIT_FAILURE;
+}
+
+status = clGetContextInfo(context,
+                          CL_CONTEXT_DEVICES,
+                          deviceListSize,
+                          devices,
+                          NULL);
+if (status != CL_SUCCESS) {
+    printf(&quot;Error: Getting Context Info (device list, clGetContextInfo)\n&quot;);
+    return EXIT_FAILURE;
+}
+</code></pre>
+
+<p>与获取 platform 类似，我们调用两次 <code>clGetContextInfo</code> 来完成 <code>查询</code>。第一次调用获取关联 context 的 device 个数，并根据个数申请内存；第二次调用获取所有 device 实例。如果你想了解每个 device 的具体信息，可以调用 <code>clGetDeviceInfo</code> 函数来获取，返回的信息有设备类型、生产商以及设备对某些扩展功能的支持与否等等。详细使用情况请参阅 <code>OpenCL Specifications</code>。</p>
+<p>到此，platform 相关的程序已经准备就绪了，下面到此的完整代码：</p>
+<pre><code>/* OpenCL_01.cpp 
+ * (c) by keyring &lt;keyrings@163.com&gt;
+ * 2013.10.26
+ */
+
+#if defined(__APPLE__) || defined(__MACOSX)
+#include &lt;OpenCL/cl.hpp&gt;
+#else
+#include &lt;CL/cl.h&gt;
+#endif
+
+#include &lt;iostream&gt;
+
+int main(int argc, char const *argv[])
+{
+    printf(&quot;hello OpenCL\n&quot;);
+    cl_int status = 0;
+    size_t deviceListSize;
+
+    // 得到并选择可用平台
+    cl_uint numPlatforms;
+    cl_platform_id platform = NULL;
+    status = clGetPlatformIDs(0, NULL, &amp;numPlatforms);
+
+    if (status != CL_SUCCESS) {
+        printf(&quot;ERROR: Getting Platforms.(clGetPlatformIDs)\n&quot;);
+        return EXIT_FAILURE;
+    }
+
+    if (numPlatforms &gt; 0) {
+        cl_platform_id *platforms = (cl_platform_id *)malloc(numPlatforms * sizeof(cl_platform_id));
+        status = clGetPlatformIDs(numPlatforms, platforms, NULL);
+        if (status != CL_SUCCESS) {
+            printf(&quot;Error: Getting Platform Ids.(clGetPlatformIDs)\n&quot;);
+            return -1;
+        }
+
+        // 遍历所有 platform，选择你想用的
+        for (unsigned int i = 0; i &lt; numPlatforms; ++i) {
+            char pbuff[100];
+            status = clGetPlatformInfo(
+                         platforms[i],
+                         CL_PLATFORM_VENDOR,
+                         sizeof(pbuff),
+                         pbuff,
+                         NULL);
+            platform = platforms[i];
+            if (!strcmp(pbuff, &quot;Advanced Micro Devices, Inc.&quot;)) {
+                break;
+            }
+        }
+
+        delete platforms;
+    }
+
+    // 如果我们能找到相应平台，就使用它，否则返回NULL
+    cl_context_properties cps[3] = {
+        CL_CONTEXT_PLATFORM,
+        (cl_context_properties)platform,
+        0
+    };
+
+    cl_context_properties *cprops = (NULL == platform) ? NULL : cps;
+
+
+    // 生成 context
+    cl_context context = clCreateContextFromType(
+                             cprops,
+                             CL_DEVICE_TYPE_GPU,
+                             NULL,
+                             NULL,
+                             &amp;status);
+    if (status != CL_SUCCESS) {
+        printf(&quot;Error: Creating Context.(clCreateContexFromType)\n&quot;);
+        return EXIT_FAILURE;
+    }
+
+    // 寻找OpenCL设备
+
+    // 首先得到设备列表的长度
+    status = clGetContextInfo(context,
+                              CL_CONTEXT_DEVICES,
+                              0,
+                              NULL,
+                              &amp;deviceListSize);
+    if (status != CL_SUCCESS) {
+        printf(&quot;Error: Getting Context Info device list size, clGetContextInfo)\n&quot;);
+        return EXIT_FAILURE;
+    }
+    cl_device_id *devices = (cl_device_id *)malloc(deviceListSize);
+    if (devices == 0) {
+        printf(&quot;Error: No devices found.\n&quot;);
+        return EXIT_FAILURE;
+    }
+
+    // 然后得到设备列表
+    status = clGetContextInfo(context,
+                              CL_CONTEXT_DEVICES,
+                              deviceListSize,
+                              devices,
+                              NULL);
+    if (status != CL_SUCCESS) {
+        printf(&quot;Error: Getting Context Info (device list, clGetContextInfo)\n&quot;);
+        return EXIT_FAILURE;
+    }
+</code></pre>
+
+<h2><span id="running"> Running time </span></h2>
+<p>前面写了一大篇，其实还没真正进入具体的程序逻辑中，顶多算配好了 OpenCL  运行环境。真正的逻辑代码，即程序的任务就是运行时模块。本例的任务是在一个 4×4的二维空间上，按一定的规则给每个元素赋值，具体代码如下：</p>
+<pre><code>#define KERNEL(...)#__VA_ARGS__
+
+const char *kernelSourceCode = KERNEL(
+                                   __kernel void hellocl(__global uint *buffer)
+{
+    size_t gidx = get_global_id(0);
+    size_t gidy = get_global_id(1);
+    size_t lidx = get_local_id(0);
+    buffer[gidx + 4 * gidy] = (1 &lt;&lt; gidx) | (0x10 &lt;&lt; gidy);
+
+}
+                               );
+</code></pre>
+
+<p>这一段就是我们真正的逻辑，也就是代码要干的事。使用的是 OpenCL 自定的一门类C语言，具体的语法什么的现在先不纠结。这段代码是直接嵌入我们的 <code>cpp</code> 文件的静态字符串。你也可以将 kernel 程序单独写成一个文件。</p>
+<h3><span id="program">加载 OpenCL 内核程序并创建一个 program 对象 </span></h3>
+<p>接下来要做的就是读入 OpenCL kernel 程序并创建一个 program 对象。</p>
+<pre><code>size_t sourceSize[] = {strlen(kernelSourceCode)};
+cl_program program = clCreateProgramWithSource(context,
+                     1,
+                     &amp;kernelSourceCode,
+                     sourceSize,
+                     &amp;status);
+if (status != CL_SUCCESS) {
+    printf(&quot;Error: Loading Binary into cl_program (clCreateProgramWithBinary)\n&quot;);
+    return EXIT_FAILURE;
+}
+</code></pre>
+
+<p>本例中的 kernel 程序是作为静态字符串读入的（单独的文本文件也一样），所以使用的是 <code>clCreateProgramWithSource</code>，如果你不想让 kernel 程序让其他人看见，可以先生成二进制文件，再通过 <code>clCreateProgramWithBinary</code> 函数动态读入二进制文件，做一定的保密。详细请参阅 <code>OpenCL Specifications</code>。</p>
+<h3><span id="build">为指定的 device 编译 program 中的 kernel </span></h3>
+<p>kernel 程序读入完毕，要做的自然是使用 <code>clBuildProgram</code> 编译 kernel：</p>
+<pre><code>status = clBuildProgram(program, 1, devices, NULL, NULL, NULL);
+if (status != CL_SUCCESS) {
+    printf(&quot;Error: Building Program (clBuildingProgram)\n&quot;);
+    return EXIT_FAILURE;
+}
+</code></pre>
+
+<p>最终，kernel 将被相应 device 上的 OpenCL 编译器编译成可执行的机器码。</p>
+<h3><span id="kernel"> 创建指定名字的 kernel 对象 </span></h3>
+<p>成功编译后，可以通过 <code>clCreateKernel</code> 来创建一个 kernel 对象。</p>
+<pre><code>cl_kernel kernel = clCreateKernel(program, &quot;hellocl&quot;, &amp;status);
+if (status != CL_SUCCESS) {
+    printf(&quot;Error: Creating Kernel from program.(clCreateKernel)\n&quot;);
+    return EXIT_FAILURE;
+}
+</code></pre>
+
+<p>引号中的 <code>hellocl</code> 就是 kernel 对象所关联的 kernel 函数的函数名。要注意的是，每个 kernel 对象必须关联且只能关联一个包含于相应 program 对象内的 kernel 程序。实际上，用户可以在 cl 源代码中写任意多个 kernel 程序，但在执行某个 kernel 程序之前必须先建立单独的 kernel 对象，即多次调用 <code>clCreateKernel</code> 函数。</p>
+<h3><span id="memory">为 kernel 创建内存对象 </span></h3>
+<p>OpenCL 内存对象是指在 host 中创建，用于 kernel 程序的内存类型。按维度可以分为两类，一类是 <code>buffer</code>，一类是 <code>image</code>。<code>buffer</code> 是一维的，<code>image</code> 可以是二维、三维的 texture、frame-buffer 或 image。本例仅仅使用 <code>buffer</code>，可以通过 <code>clCreateBuffer</code> 函数来创建。</p>
+<pre><code>cl_mem outputBuffer = clCreateBuffer(
+                                    context, 
+                                    CL_MEM_ALLOC_HOST_PTR, 
+                                    4 * 4 * 4, 
+                                    NULL, 
+                                    &amp;status);
+if (status != CL_SUCCESS) {
+    printf(&quot;Error: Create Buffer, outputBuffer. (clCreateBuffer)\n&quot;);
+    return EXIT_FAILURE;
+}
+</code></pre>
+
+<h3><span id="arg">为 kernel 设置参数 </span></h3>
+<p>使用 <code>clSetKernelArg</code> 函数为 kernel 设置参数。传递的参数既可以是常数，变量，也可以是内存对象。本例传递的就是内存对象。</p>
+<pre><code>status = clSetKernelArg(kernel, 0, sizeof(cl_mem), (void *)&amp;outputBuffer);
+if (status != CL_SUCCESS) {
+    printf(&quot;Error: Setting kernel argument. (clSetKernelArg)\n&quot;);
+    return EXIT_FAILURE;
+}
+</code></pre>
+
+<p>该函数每次只能设置一个参数，如有多个参数，需多次调用。而且 kernel 程序中所有的参数都必须被设置，否则在启动 kernel 程序是会报错。指定位置的参数的类型最好和对应 kernel 函数内参数类型一致，以免产生各种未知的错误。在设置好指定参数后，每次运行该 kernel 程序都会使用设置值，直到用户使用次 API 重新设置参数。</p>
+<h3><span id="createcommand">在指定的 device 上创建 command queue </span></h3>
+<p>command queue 用于光里将要执行的各种命令。可以通过 <code>clCreateCommandQueue</code> 函数创建。其中的 device 必须为 context 的关联设备，所有该 command queue 中的命令都会在这个指定的 device 上运行。</p>
+<pre><code>cl_command_queue commandQueue = clCreateCommandQueue(context,
+                                devices[0],
+                                0,
+                                &amp;status);
+if (status != CL_SUCCESS) {
+    printf(&quot;Error: Create Command Queue. (clCreateCommandQueue)\n&quot;);
+    return EXIT_FAILURE;
+}
+</code></pre>
+
+<h3><span id="execommand"> 将要执行的 kernel 放入 command queue </span></h3>
+<p>创建好 command queue 后，用户可以创建相应的命令并放入 command queue 中执行。OpenCL 提供了三种方案来创建 kernel 执行命令。最常用的即为本例所示的运行在指定工作空间上的 kernel 程序，使用了 <code>clEnqueueNDRangeKernel</code> 函数。</p>
+<pre><code>size_t globalThreads[] = {4, 4};
+size_t localThreads[] = {2, 2};
+status = clEnqueueNDRangeKernel(commandQueue, kernel,
+                                2, NULL, globalThreads,
+                                localThreads, 0,
+                                NULL, NULL);
+if (status != CL_SUCCESS) {
+    printf(&quot;Error: Enqueueing kernel\n&quot;);
+    return EXIT_FAILURE;
+}
+</code></pre>
+
+<p><code>clEnqueueNDRangeKernel</code> 函数每次只能将一个 kernel 对象放入 command queue 中，用户可以多次调用该 API 将多个 kernel 对象放置到一个 command queue 中，command queue 中的不同 kernel 对象的工作区域完全不相关。其余两个 API <code>clEnqueueTask</code> 和 <code>clEnqueueNativeKernel</code> 的用法就不多讲了，详情请参阅 <code>OpenCL Specificarions</code>。</p>
+<p>最后可以用 <code>clFinish</code> 函数来确认一个 command queue 中所有的命令都执行完毕。函数会在 command queue 中所有 kernel 执行完毕后返回。</p>
+<pre><code>// 确认 command queue 中所有命令都执行完毕
+status = clFinish(commandQueue);
+if (status != CL_SUCCESS) {
+    printf(&quot;Error: Finish command queue\n&quot;);
+    return EXIT_FAILURE;
+}
+</code></pre>
+
+<h3><span id="return"> 将结果读回 host </span></h3>
+<p>计算完毕，将结果读回 host 端。使用 <code>clEnqueueReadBuffer</code> 函数将 OpenCL buffer 对象中的内容读取到 host 可以访问的内存空间。</p>
+<pre><code>// 将内存对象中的结果读回Host
+status = clEnqueueReadBuffer(commandQueue,
+                             outputBuffer, CL_TRUE, 0,
+                             4 * 4 * 4, outbuffer, 0, NULL, NULL);
+if (status != CL_SUCCESS) {
+    printf(&quot;Error: Read buffer queue\n&quot;);
+    return EXIT_FAILURE;
+}
+</code></pre>
+
+<p>当然，为了看下程序的运行效果，咱们当然得看看运行结果啦。打印一下吧：</p>
+<pre><code>// Host端打印结果
+printf(&quot;out:\n&quot;);
+for (int i = 0; i &lt; 16; ++i) {
+    printf(&quot;%x &quot;, outbuffer[i]);
+    if ((i + 1) % 4 == 0)
+        printf(&quot;\n&quot;);
+}
+</code></pre>
+
+<h2><span id="free">资源回收 </span></h2>
+<p>程序的最后是对所有创建的对象进行释放回收，与C/C++的内存回收同理。</p>
+<pre><code>// 资源回收
+status = clReleaseKernel(kernel);
+status = clReleaseProgram(program);
+status = clReleaseMemObject(outputBuffer);
+status = clReleaseCommandQueue(commandQueue);
+status = clReleaseContext(context);
+
+free(devices);
+delete outbuffer;
+</code></pre>
+
+<h2><span id="jie">总结 </span></h2>
+<p>这次使用一个小例子来详细说明了 OpenCL 编程的一般步骤。其实这些步骤一般都是固定的。真正需要我们注意的是  OpenCL Kernel 程序的编写。当然，合理高效的利用 API 也是一门技术活。</p>
+<p>最后给出本实例的全部代码：
+<span id="code"></span></p>
+<pre><code>/*  OpenCL_01.cpp
+ *  (c) by keyring &lt;keyrings@163.com&gt;
+ *  2013.10.26
+ */
+
+#include &lt;iostream&gt;
+
+#if defined(__APPLE__) || defined(__MACOSX)
+#include &lt;OpenCL/cl.hpp&gt;
+#else
+#include &lt;CL/cl.h&gt;
+#endif
+
+
+#define KERNEL(...)#__VA_ARGS__
+
+const char *kernelSourceCode = KERNEL(
+                                   __kernel void hellocl(__global uint *buffer)
+{
+    size_t gidx = get_global_id(0);
+    size_t gidy = get_global_id(1);
+    size_t lidx = get_local_id(0);
+    buffer[gidx + 4 * gidy] = (1 &lt;&lt; gidx) | (0x10 &lt;&lt; gidy);
+
+}
+                               );
+
+int main(int argc, char const *argv[])
+{
+    printf(&quot;hello OpenCL\n&quot;);
+    cl_int status = 0;
+    size_t deviceListSize;
+
+    // 得到并选择可用平台
+    cl_uint numPlatforms;
+    cl_platform_id platform = NULL;
+    status = clGetPlatformIDs(0, NULL, &amp;numPlatforms);
+
+    if (status != CL_SUCCESS) {
+        printf(&quot;ERROR: Getting Platforms.(clGetPlatformIDs)\n&quot;);
+        return EXIT_FAILURE;
+    }
+
+    if (numPlatforms &gt; 0) {
+        cl_platform_id *platforms = (cl_platform_id *)malloc(numPlatforms * sizeof(cl_platform_id));
+        status = clGetPlatformIDs(numPlatforms, platforms, NULL);
+        if (status != CL_SUCCESS) {
+            printf(&quot;Error: Getting Platform Ids.(clGetPlatformIDs)\n&quot;);
+            return -1;
+        }
+
+        for (unsigned int i = 0; i &lt; numPlatforms; ++i) {
+            char pbuff[100];
+            status = clGetPlatformInfo(
+                         platforms[i],
+                         CL_PLATFORM_VENDOR,
+                         sizeof(pbuff),
+                         pbuff,
+                         NULL);
+            platform = platforms[i];
+            if (!strcmp(pbuff, &quot;Advanced Micro Devices, Inc.&quot;)) {
+                break;
+            }
+        }
+
+        delete platforms;
+    }
+
+    // 如果我们能找到相应平台，就使用它，否则返回NULL
+    cl_context_properties cps[3] = {
+        CL_CONTEXT_PLATFORM,
+        (cl_context_properties)platform,
+        0
+    };
+
+    cl_context_properties *cprops = (NULL == platform) ? NULL : cps;
+
+
+    // 生成 context
+    cl_context context = clCreateContextFromType(
+                             cprops,
+                             CL_DEVICE_TYPE_GPU,
+                             NULL,
+                             NULL,
+                             &amp;status);
+    if (status != CL_SUCCESS) {
+        printf(&quot;Error: Creating Context.(clCreateContexFromType)\n&quot;);
+        return EXIT_FAILURE;
+    }
+
+    // 寻找OpenCL设备
+
+    // 首先得到设备列表的长度
+    status = clGetContextInfo(context,
+                              CL_CONTEXT_DEVICES,
+                              0,
+                              NULL,
+                              &amp;deviceListSize);
+    if (status != CL_SUCCESS) {
+        printf(&quot;Error: Getting Context Info device list size, clGetContextInfo)\n&quot;);
+        return EXIT_FAILURE;
+    }
+    cl_device_id *devices = (cl_device_id *)malloc(deviceListSize);
+    if (devices == 0) {
+        printf(&quot;Error: No devices found.\n&quot;);
+        return EXIT_FAILURE;
+    }
+
+    // 现在得到设备列表
+    status = clGetContextInfo(context,
+                              CL_CONTEXT_DEVICES,
+                              deviceListSize,
+                              devices,
+                              NULL);
+    if (status != CL_SUCCESS) {
+        printf(&quot;Error: Getting Context Info (device list, clGetContextInfo)\n&quot;);
+        return EXIT_FAILURE;
+    }
+
+
+    // 装载内核程序，编译CL program ,生成CL内核实例
+
+    size_t sourceSize[] = {strlen(kernelSourceCode)};
+    cl_program program = clCreateProgramWithSource(context,
+                         1,
+                         &amp;kernelSourceCode,
+                         sourceSize,
+                         &amp;status);
+    if (status != CL_SUCCESS) {
+        printf(&quot;Error: Loading Binary into cl_program (clCreateProgramWithBinary)\n&quot;);
+        return EXIT_FAILURE;
+    }
+
+    // 为指定的设备编译CL program.
+    status = clBuildProgram(program, 1, devices, NULL, NULL, NULL);
+    if (status != CL_SUCCESS) {
+        printf(&quot;Error: Building Program (clBuildingProgram)\n&quot;);
+        return EXIT_FAILURE;
+    }
+
+    // 得到指定名字的内核实例的句柄
+    cl_kernel kernel = clCreateKernel(program, &quot;hellocl&quot;, &amp;status);
+    if (status != CL_SUCCESS) {
+        printf(&quot;Error: Creating Kernel from program.(clCreateKernel)\n&quot;);
+        return EXIT_FAILURE;
+    }
+
+    // 创建 OpenCL buffer 对象
+    unsigned int *outbuffer = new unsigned int [4 * 4];
+    memset(outbuffer, 0, 4 * 4 * 4);
+    cl_mem outputBuffer = clCreateBuffer(
+        context, 
+        CL_MEM_ALLOC_HOST_PTR, 
+        4 * 4 * 4, 
+        NULL, 
+        &amp;status);
+
+    if (status != CL_SUCCESS) {
+        printf(&quot;Error: Create Buffer, outputBuffer. (clCreateBuffer)\n&quot;);
+        return EXIT_FAILURE;
+    }
+
+
+    //  为内核程序设置参数
+    status = clSetKernelArg(kernel, 0, sizeof(cl_mem), (void *)&amp;outputBuffer);
+    if (status != CL_SUCCESS) {
+        printf(&quot;Error: Setting kernel argument. (clSetKernelArg)\n&quot;);
+        return EXIT_FAILURE;
+    }
+
+    // 创建一个OpenCL command queue
+    cl_command_queue commandQueue = clCreateCommandQueue(context,
+                                    devices[0],
+                                    0,
+                                    &amp;status);
+    if (status != CL_SUCCESS) {
+        printf(&quot;Error: Create Command Queue. (clCreateCommandQueue)\n&quot;);
+        return EXIT_FAILURE;
+    }
+
+
+    // 将一个kernel 放入 command queue
+    size_t globalThreads[] = {4, 4};
+    size_t localThreads[] = {2, 2};
+    status = clEnqueueNDRangeKernel(commandQueue, kernel,
+                                    2, NULL, globalThreads,
+                                    localThreads, 0,
+                                    NULL, NULL);
+    if (status != CL_SUCCESS) {
+        printf(&quot;Error: Enqueueing kernel\n&quot;);
+        return EXIT_FAILURE;
+    }
+
+    // 确认 command queue 中所有命令都执行完毕
+    status = clFinish(commandQueue);
+    if (status != CL_SUCCESS) {
+        printf(&quot;Error: Finish command queue\n&quot;);
+        return EXIT_FAILURE;
+    }
+
+    // 将内存对象中的结果读回Host
+    status = clEnqueueReadBuffer(commandQueue,
+                                 outputBuffer, CL_TRUE, 0,
+                                 4 * 4 * 4, outbuffer, 0, NULL, NULL);
+    if (status != CL_SUCCESS) {
+        printf(&quot;Error: Read buffer queue\n&quot;);
+        return EXIT_FAILURE;
+    }
+
+    // Host端打印结果
+    printf(&quot;out:\n&quot;);
+    for (int i = 0; i &lt; 16; ++i) {
+        printf(&quot;%x &quot;, outbuffer[i]);
+        if ((i + 1) % 4 == 0)
+            printf(&quot;\n&quot;);
+    }
+
+    // 资源回收
+    status = clReleaseKernel(kernel);
+    status = clReleaseProgram(program);
+    status = clReleaseMemObject(outputBuffer);
+    status = clReleaseCommandQueue(commandQueue);
+    status = clReleaseContext(context);
+
+    free(devices);
+    delete outbuffer;
+
+    system(&quot;pause&quot;);
+
+    return 0;
+}
+</code></pre>
+
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->
