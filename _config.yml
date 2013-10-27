@@ -5,9 +5,10 @@ name: Photone Ray
 author: Keyring
 qq: 312674525
 email: keyrings@163.com / zkeyring@gmail.com
+duoshuo: keyring
 github: keyring
 pygments: true
 safe: true
 paginate: 20
-◦truncate: 300
-about: "思维停靠的港湾"
+truncate: 300
+about: "圈钥匙的钥匙圈·思维停靠的港湾"
