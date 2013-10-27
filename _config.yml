@@ -10,5 +10,5 @@ github: keyring
 pygments: true
 safe: true
 paginate: 20
-truncate: 300
+truncate: 50
 about: "圈钥匙的钥匙圈·思维停靠的港湾"
