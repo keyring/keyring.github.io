@@ -1,7 +1,7 @@
 ---
 data: 2013-12-29
 layout: post
-title: Simple Ray Tracer(1)
+title: Ray Tracer Sample— Mini Ray Tracer
 categories: Ray Tracing
 tags: 源码 光线追踪
 ---
