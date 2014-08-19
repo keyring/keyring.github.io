@@ -8,6 +8,8 @@ tags: lua note
 
 **LuaSocket** 是一个 Lua 网络扩展库，它由两部分组成：一个用C写的核心和一些Lua模块，前者提供TCP和UDP传输层支持，后者为上层应用提供网络处理的功能接口。
 
+
+----------------------------------------
 ##下载安装
 ------------------
 通过搜索引擎得到的结果是作者的[官方网站](http://w3.impa.br/~diego/software/luasocket/)，上面提供的最新版本为[2.0.2](http://files.luaforge.net/releases/luasocket/luasocket)。而实际上，作者早已把项目搬上了[他的Github](https://github.com/diegonehab/luasocket),当前最新版为[3.0-rc1](https://github.com/diegonehab/luasocket/releases)，支持lua5.1和lua5.2。
@@ -23,6 +25,7 @@ tags: lua note
 
 如果出现权限问题，记得加上**sudo**。
 
+------------------------------------
 ## LuaSocket 小试
 ------------------------
 
@@ -79,11 +82,14 @@ LuaSocket支持多种协议，HTTP肯定不在话下。使用模块内置http访
 * `receive`函数默认是接收一行数据即返回，判断条件为接收的字符串中的`\n`，如果找不到会报 **timeout** 的错误
 * `receive`的返回状态码是字符串形式的，错误状态只有 **closed** 和 **timeout**
 
+---------------------
 ## 更多参考
 ---------------
 * [LuaSocket的Github仓库](https://github.com/diegonehab/luasocket)
 * [官方参考手册](http://w3.impa.br/~diego/software/luasocket/reference.html)
 
+------------------
 ## 题外话
+-------------------------
 * cocos2dx-3.x版本已经将LuaSocket放入了扩展库中，采用的版本也是3.0-rc1，但至今还没有示例，也未做集成封装。
 * quick-cocos2d-x 到是做了封装，所以如果要在自己的项目中集成封装LuaSocket，可以参考之。[请看这](http://zengrong.net/post/1980.htm)
