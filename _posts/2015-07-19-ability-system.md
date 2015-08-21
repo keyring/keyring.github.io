@@ -1,4 +1,4 @@
-*.
+
 ---
 data: 2015-07-19
 layout: post
