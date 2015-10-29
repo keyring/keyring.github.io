@@ -17,11 +17,11 @@ tags: lua note
 
 首先介绍一下sproto库，该库是云风精心构思后对 Google protobuf 协议的一个精简，更适用于游戏开发。详情请参阅[文档](https://github.com/cloudwu/sproto/blob/master/README.md)
 
-但是云风的这个库只支持lua5.2+的版本，而cocos2dx使用的是lua5.1，所以要使用的话，可以试试我的修改版。我所做的修改仅仅在lua层，下层的c核心与原版一致。所做的修改只是用 **bitop** 库来替换lua5.2内置的**bit**库（5.1木有）。
+~~但是云风的这个库只支持lua5.2+的版本，而cocos2dx使用的是lua5.1，所以要使用的话，可以试试我的修改版。我所做的修改仅仅在lua层，下层的c核心与原版一致。所做的修改只是用 **bitop** 库来替换lua5.2内置的**bit**库（5.1木有）。~~
 
-首先请下载 [sproto](https://github.com/keyring/mproto)。需要的文件为 `sproto.h`,`sproto.c`,`lsproto.h`,`lsproto.c`,`sprotoparser.lua`。
+首先请下载 [sproto](https://github.com/cloudwu/sproto)。需要的文件为 `sproto.h`,`sproto.c`,`lsproto.c`,`sprotoparser.lua`。
 
-然后我们还需要下载其利用到的相关库 **bitop** 和 **lpeg**。
+然后我们还需要下载其利用到的相关库 **lpeg**。
 
 文件准备就绪后就是导入到 cocos2dx 中。
 
@@ -29,21 +29,21 @@ tags: lua note
 ##导入
 ------------------
 
-在 `cocos2d-x/external/lua` 目录下新建三个文件夹 **sproto**,**bitop**,**lpeg**。然后将各自的文件放入其中，为了符合cocos2dx的规范，需要在**bitop**中建立一个 `bit.h` 文件，内容如下。其内容只是为了方便导入，没什么具体意义。
+在 `cocos2d-x/external/lua` 目录下新建两个文件夹 **sproto**,**lpeg**。然后将各自的文件放入其中，为了符合cocos2dx的规范，需要在**sproto**中建立一个 `lsproto.h` 文件，内容如下。其内容只是为了方便导入，没什么具体意义。
 
-    #ifndef __LUA_BITOP_H_
-    #define __LUA_BITOP_H_
-
+    #ifndef __LUA_SPROTO_H_
+    #define __LUA_SPROTO_H_
+    
     #include "lauxlib.h"
-
-    LUALIB_API int luaopen_bit(lua_State *L);
-
+    
+    LUALIB_API int luaopen_sproto_core(lua_State *L);
+    
     #endif
 
 
 然后就是修改一些文件，来真正的导入了。
 
-在`cocos2d-x/cocos/scripting/lua-bindings/manual`目录下，找到 `lua_extensions.c` 文件。在 头部包含所需文件。
+在`cocos2d-x/cocos/scripting/lua-bindings/manual`目录下，搜索 `lua_extensions.c` 文件。在头部包含所需文件。
 
 	#include "lpeg/lptypes.h"
 	#include "lpeg/lpcap.h"
@@ -53,15 +53,8 @@ tags: lua note
 	#include "lpeg/lpvm.h"
 	#include "sproto/lsproto.h"
 
-	#if (CC_TARGET_PLATFORM != CC_PLATFORM_ANDROID)
-	#include "bitop/bit.h"
-	#endif
-
 在 `luax_exts`内，加入下列几行。
 
-	#if (CC_TARGET_PLATFORM != CC_PLATFORM_ANDROID)
-        {"bit", luaopen_bit},
-	#endif
         {"lpeg", luaopen_lpeg},
         {"sproto.core", luaopen_sproto_core},
 
@@ -74,7 +67,7 @@ tags: lua note
 上述工作完成后，是可以在ios和mac下编译运行成功的。但Android还要多做点事情。
 
 
-在`cocos2d-x/cocos/scripting/lua-bindings/`目录下，打开 **Android.mk** 文件，在那一长串加载c文件后面，加入我们需要的c文件
+在`cocos2d-x/cocos/scripting/lua-bindings/`目录下，找到 **Android.mk** 文件，在那一长串加载c文件后面，依葫芦画瓢，加入我们需要的c文件，
 
           ../../../external/lua/lpeg/lpcap.c \
           ../../../external/lua/lpeg/lpcode.c \
@@ -83,8 +76,6 @@ tags: lua note
           ../../../external/lua/lpeg/lpvm.c \
           ../../../external/lua/sproto/lsproto.c \
           ../../../external/lua/sproto/sproto.c \
-
-细心点的可能会说`bit.c`没加。原因很简单，Android支持**luajit**库，里面已经包含了bit库，所以就不用我们来加了，不然编译的时候会出现多重定义的错误。所以在`lua_extensions.c`文件里，我们也加上了条件编译 `#if (CC_TARGET_PLATFORM != CC_PLATFORM_ANDROID) ... #endif`。
 
 然后。。。是真的没有然后了。。。
 
@@ -96,3 +87,4 @@ tags: lua note
 * 文件放到**`cocos2d-x/external/lua`**目录下
 * 修改**`lua_extensions.c`**，包含相关文件
 * 修改**`Android.mk`**做Android支持
+
