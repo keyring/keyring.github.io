@@ -31,7 +31,7 @@ tags: lua note
 
 在 `cocos2d-x/external/lua` 目录下新建两个文件夹 **sproto**,**lpeg**。然后将各自的文件放入其中，为了符合cocos2dx的规范，需要在**sproto**中建立一个 `lsproto.h` 文件，内容如下。其内容只是为了方便导入，没什么具体意义。
 
-    ```c
+
     #ifndef __LUA_SPROTO_H_
     #define __LUA_SPROTO_H_
     
@@ -40,14 +40,12 @@ tags: lua note
     LUALIB_API int luaopen_sproto_core(lua_State *L);
     
     #endif
-    ```
+
 
 
 然后就是修改一些文件，来真正的导入了。
 
 在`cocos2d-x/cocos/scripting/lua-bindings/manual`目录下，搜索 `lua_extensions.c` 文件。在头部包含所需文件。
-
-{% highlight c %}
 
     #include "lpeg/lptypes.h"
     #include "lpeg/lpcap.h"
@@ -57,16 +55,12 @@ tags: lua note
     #include "lpeg/lpvm.h"
     #include "sproto/lsproto.h"
 
-{% endhighlight %}
+
 
 在 `luax_exts`内，加入下列几行。
 
-{% highlight c %}
-
         {"lpeg", luaopen_lpeg},
         {"sproto.core", luaopen_sproto_core},
-
-{% endhighlight %}
 
 然后。。。。就没有然后了。。。。
 
@@ -79,8 +73,6 @@ tags: lua note
 
 在`cocos2d-x/cocos/scripting/lua-bindings/`目录下，找到 **Android.mk** 文件，在那一长串加载c文件后面，依葫芦画瓢，加入我们需要的c文件，
 
-{% highlight c %}
-
           ../../../external/lua/lpeg/lpcap.c \
           ../../../external/lua/lpeg/lpcode.c \
           ../../../external/lua/lpeg/lpprint.c \
@@ -88,8 +80,6 @@ tags: lua note
           ../../../external/lua/lpeg/lpvm.c \
           ../../../external/lua/sproto/lsproto.c \
           ../../../external/lua/sproto/sproto.c \
-
-{% endhighlight %}
 
 然后。。。是真的没有然后了。。。
 
