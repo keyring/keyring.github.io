@@ -48,6 +48,8 @@ tags: lua note
 
 在`cocos2d-x/cocos/scripting/lua-bindings/manual`目录下，搜索 `lua_extensions.c` 文件。在头部包含所需文件。
 
+{% highlight c %}
+
     #include "lpeg/lptypes.h"
     #include "lpeg/lpcap.h"
     #include "lpeg/lpcode.h"
@@ -56,10 +58,16 @@ tags: lua note
     #include "lpeg/lpvm.h"
     #include "sproto/lsproto.h"
 
+{% endhighlight %}
+
 在 `luax_exts`内，加入下列几行。
+
+{% highlight c %}
 
         {"lpeg", luaopen_lpeg},
         {"sproto.core", luaopen_sproto_core},
+
+{% endhighlight %}
 
 然后。。。。就没有然后了。。。。
 
@@ -72,6 +80,8 @@ tags: lua note
 
 在`cocos2d-x/cocos/scripting/lua-bindings/`目录下，找到 **Android.mk** 文件，在那一长串加载c文件后面，依葫芦画瓢，加入我们需要的c文件，
 
+{% highlight c %}
+
           ../../../external/lua/lpeg/lpcap.c \
           ../../../external/lua/lpeg/lpcode.c \
           ../../../external/lua/lpeg/lpprint.c \
@@ -79,6 +89,8 @@ tags: lua note
           ../../../external/lua/lpeg/lpvm.c \
           ../../../external/lua/sproto/lsproto.c \
           ../../../external/lua/sproto/sproto.c \
+
+{% endhighlight %}
 
 然后。。。是真的没有然后了。。。
 
