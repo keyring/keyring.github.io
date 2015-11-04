@@ -46,13 +46,13 @@ tags: lua note
 
 在`cocos2d-x/cocos/scripting/lua-bindings/manual`目录下，搜索 `lua_extensions.c` 文件。在头部包含所需文件。
 
-	#include "lpeg/lptypes.h"
-	#include "lpeg/lpcap.h"
-	#include "lpeg/lpcode.h"
-	#include "lpeg/lpprint.h"
-	#include "lpeg/lptree.h"
-	#include "lpeg/lpvm.h"
-	#include "sproto/lsproto.h"
+    #include "lpeg/lptypes.h"
+    #include "lpeg/lpcap.h"
+    #include "lpeg/lpcode.h"
+    #include "lpeg/lpprint.h"
+    #include "lpeg/lptree.h"
+    #include "lpeg/lpvm.h"
+    #include "sproto/lsproto.h"
 
 在 `luax_exts`内，加入下列几行。
 
