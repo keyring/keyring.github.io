@@ -10,7 +10,13 @@
     <link rel="stylesheet" href="/media/css/monokai_sublime.css" />
     <script type="text/javascript" src="/media/js/jquery-1.7.1.min.js"></script>
     <script src="/media/js/highlight.pack.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
+
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $('pre code').each(function(i, block) {
+            hljs.highlightBlock(block);
+        });
+    });</script>
   </head>
   
     <script type="text/javascript">
