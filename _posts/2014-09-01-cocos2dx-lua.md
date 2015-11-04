@@ -31,8 +31,7 @@ tags: lua note
 
 在 `cocos2d-x/external/lua` 目录下新建两个文件夹 **sproto**,**lpeg**。然后将各自的文件放入其中，为了符合cocos2dx的规范，需要在**sproto**中建立一个 `lsproto.h` 文件，内容如下。其内容只是为了方便导入，没什么具体意义。
 
-    {% highlight c %}
-    
+    ```c
     #ifndef __LUA_SPROTO_H_
     #define __LUA_SPROTO_H_
     
@@ -41,7 +40,7 @@ tags: lua note
     LUALIB_API int luaopen_sproto_core(lua_State *L);
     
     #endif
-    {% endhighlight %}
+    ```
 
 然后就是修改一些文件，来真正的导入了。
 
