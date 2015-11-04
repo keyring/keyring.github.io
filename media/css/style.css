@@ -37,7 +37,7 @@ blockquote, pre code {
 code {
   background-color: #f8f8f8;
   padding: 2px 5px;
-  border: 1px dashed #e0e0e0;
+  border: 1px inset #e0e0e0;
   font-family: Menlo,"Andale Mono",Consolas,"Courier New",Monaco,monospace; }
 #container{width:600px;margin:2em auto;display:block;padding:0 2em;}
 .content{font-size:16px;line-height:24px;}
