@@ -151,6 +151,11 @@
         $(window).scroll(function(){ 
 
             var scrollAmount=$(document).scrollTop();
+            if (scrollAmount < toplest) 
+                scrollAmount = 0;
+            else
+                scrollAmount = scrollAmount-50;
+
             var newPosition=toplest+scrollAmount;
             $('#toc').stop().animate({top: newPosition}, animationSpeed, animationEasing);
             $('#toc').css("top",newPosition)
