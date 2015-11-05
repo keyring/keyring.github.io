@@ -72,7 +72,7 @@ $(function() {
 		
     $(window).resize(function () {
         var w = $(window).width(),
-            c = 800,
+            c = 600,
             a = h2outline.width();
 			d = 10; // #real_nav has left margin of -184.8px
         h2outline.css('right',
