@@ -13,22 +13,6 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
     <script type="text/javascript"> hljs.initHighlightingOnLoad(); </script>
   </head>
-
-  <script type="text/javascript">
-     $(document).ready(function(){
-          $("h2,h3,h4,h5,h6").each(function(i,item){
-            var tag = $(item).get(0).localName;
-            $(item).attr("id","wow"+i);
-            $("#category").append('<a class="new'+tag+'" href="#wow'+i+'">'+$(this).text()+'</a></br>');
-            $(".newh2").css("margin-left",0);
-            $(".newh3").css("margin-left",20);
-            $(".newh4").css("margin-left",40);
-            $(".newh5").css("margin-left",60);
-            $(".newh6").css("margin-left",80);
-          });
-     });
-    </script>
-   
   
     <script type="text/javascript">
     function setTimeSpan(){
@@ -72,11 +56,7 @@
         <span><a title="关于站长" class="" href="/about/">ABOUT</a></span>
         <span><a title="种子订阅" class="" href="/feed/" target="_blank">RSS</a></span>
         </nav>
-        <nav>
-            <div id="category"></div>
-        </nav>
         <article class="content">
-        
         {{ content }}
         </article>
 
@@ -96,5 +76,6 @@
     </footer>
 
     </div>
+    <script src="{{ site.url }}/media/js/toc-aside.js"></script>
   </body>
 </html>
