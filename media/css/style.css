@@ -58,7 +58,7 @@ code {
     float:right;
     /*margin-right:-17em;*/
     /*right:0em;*/
-    width:15em;
+    width:11em;
     text-align:left;
     color:#fff;
     cursor:pointer;
@@ -71,7 +71,7 @@ code {
 
 }
 #toc ul{-webkit-padding-start: 0px;padding:0px;}
-#toc a{display:block;padding:.1em .5em;color:#000000;}
+#toc a{display:block;padding:.2em .5em;color:#000000;}
 #toc a:hover{background-color:#ff0000;text-decoration:none;color:#f9f9f9;-webkit-transition:color .2s linear;}
 #toc li i {
 display: inline-block;
