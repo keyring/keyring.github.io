@@ -8,9 +8,10 @@ tags: lua note
 
 使用cocos2dx-lua做开发，免不了需要利用额外的lua扩展库。lua 扩展库一般由 c/c++ 写成，其接口有两种方式生成，一种是手写luaL_register(lua5.1),另一种是利用 tolua++ 工具。这里讨论的是前者，即如何把已经写好的库导入到cocos2dx项目中使用。项目采用的是 cocos2dx-3.x 版本，涉及到的目录文件请对号入座。
 
+
 -----------------------
 ##准备所需的库
------------------------
+
 首先我们要知道，cocos2dx 已经为我们提供不少的扩展库了，在 `cocos2d-x/external/lua` 目录下，我们可以看到已经有诸如 **cjson**,**luasocket**,**filesysytem(lfs)** 等常用库。如果我们要添加其他的库，也是添加在这里的。
 
 我们以添加云风的sproto库来做示例。
@@ -27,20 +28,20 @@ tags: lua note
 
 ---------------------
 ##导入
-------------------
+
 
 在 `cocos2d-x/external/lua` 目录下新建两个文件夹 **sproto**,**lpeg**。然后将各自的文件放入其中，为了符合cocos2dx的规范，需要在**sproto**中建立一个 `lsproto.h` 文件，内容如下。其内容只是为了方便导入，没什么具体意义。
 
-
+```c
     #ifndef __LUA_SPROTO_H_
     #define __LUA_SPROTO_H_
-    
-    #include "lauxlib.h"
-    
-    LUALIB_API int luaopen_sproto_core(lua_State *L);
-    
-    #endif
 
+    #include "lauxlib.h"
+
+    LUALIB_API int luaopen_sproto_core(lua_State *L);
+
+    #endif
+```
 
 
 然后就是修改一些文件，来真正的导入了。
@@ -66,7 +67,7 @@ tags: lua note
 
 ----------------------
 ##Android支持
----------------------
+
 
 上述工作完成后，是可以在ios和mac下编译运行成功的。但Android还要多做点事情。
 
@@ -85,7 +86,7 @@ tags: lua note
 
 ---------------------
 ##总结
-------------------------
+
 总得来说还是很简单的，只需三步：
 
 * 文件放到**`cocos2d-x/external/lua`**目录下

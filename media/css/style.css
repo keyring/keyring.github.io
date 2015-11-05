@@ -52,25 +52,26 @@ code {
 
 
 }
-#h2outline{
+#toc{
     font-size:1.1em;
-    text-transform:uppercase;
-    float:left;
-    margin-left:-12em;
-    width:9em;
-    text-align:right;
+    font-family:"Electrolize",sans-serif;
+    float:right;
+    /*margin-right:-17em;*/
+    right:0em;
+    width:15em;
+    text-align:left;
     color:#fff;
     cursor:pointer;
-    background:#222;
+    background:#fff;
     border:0;
     outline:0;
     box-shadow:0 12px 24px rgba(0,0,0,0.35);
+    position:fixed
 }
-#h2outline ul{-webkit-padding-start: 0px;padding:0px;}
-#h2outline a{display:block;padding:.7em 1em;color:#fff;}
-#h2outline a:hover{background-color:rgba(255,248,213,0.1);text-decoration:none;color:#fff;-webkit-transition:color .2s linear;}
-#h2outline .menu{display:none;}
-#h2outline li i {
+#toc ul{-webkit-padding-start: 0px;padding:0px;}
+#toc a{display:block;padding:.7em 1em;color:#000000;}
+#toc a:hover{background-color:#ff0000;text-decoration:none;color:#f9f9f9;-webkit-transition:color .2s linear;}
+#toc li i {
 display: inline-block;
 width: 2em;
 }

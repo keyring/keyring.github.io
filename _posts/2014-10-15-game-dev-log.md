@@ -10,15 +10,12 @@ tags: game note
 
   当然，有些纪录思考的深入了，也会提出来独立成文。
 
-- **[cocos2dx](#cocos2dx)**
-- **[Lua](#Lua)**
-
 
 -----------------------------------------
+##cocos2dx
 
-##<span id="cocos2dx">cocos2dx </span>
------------------------------------------------------
-- **字体设置**
+----------------------
+###字体设置
 
   在游戏开发中，有时为了统一各个平台的字体表现，我们会自定义一套字体，一般是包含了常用字型的ttf文件。在cocos2dx 2.x版本中，我们一般使用`LabelTTF`接口进行创建。而在3.x版本中，coco2dx意图使用freetype字体引擎，统一各个平台的字体表现，并提升其自定义性和渲染效率。接口为`Label->createWithTTF`。
 
@@ -50,35 +47,42 @@ tags: game note
 
 --------------------
 
-## <span id="Lua"> Lua  </span>
-------------------
-- **字符串过滤**
+##Lua
+
+-------------------------
+###字符串过滤
   
   对于字符串我们总是有各种各样的过滤要求来满足神奇的需求。lua的模式匹配和table还是简单强大。
 
-  **只允许中英文数字**
+---------------
+  - **只允许中英文数字**
 
-		string.find(text,'[^%w\128-\191\194-\239]+')
+```lua
+	string.find(text,'[^%w\128-\191\194-\239]+')
+```
 
-  **敏感词汇过滤**
+--------------------
+  - **敏感词汇过滤**
   
   这个很有特色的功能基本上各个行业都会做。简单的做法就是，将目标字符串在词库中进行查找比较。如果词库简单，而且过滤条件不那么严格的话，使用lua的table就可以。
 
   思路也简单，将词库做成table，每一条做键。如果目标字符串也很简单，比如玩家的名字，可以将目标字符串的所有字串找出来，塞入一张table中，然后直接哈希查找字串。注意中英文混搭的字符串需要转为UTF8再操作。
 		
-		local text_sub_table = {}
-		local length = utf8.len(text)
-		for i=1,length do
-			for j=i,length do
-				text_sub_table[#text_sub_table +1] = utf8.sub(text,i,j)
-			end
+```lua
+	local text_sub_table = {}
+	local length = utf8.len(text)
+	for i=1,length do
+		for j=i,length do
+			text_sub_table[#text_sub_table +1] = utf8.sub(text,i,j)
 		end
+	end
 
-		for k,v in pairs(text_sub_table) do
-			if illega_words_table(v) then
-				print("你懂的")
-				break
-			end
+	for k,v in pairs(text_sub_table) do
+		if illega_words_table(v) then
+			print("你懂的")
+			break
 		end
+	end
+```
   
   
