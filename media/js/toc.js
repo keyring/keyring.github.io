@@ -1,5 +1,6 @@
 // https://github.com/ghiculescu/jekyll-table-of-contents
 (function($) {
+
     $.fn.toc = function(options) {
         var defaults = {
                 noBackToTopLinks: false,
@@ -96,5 +97,63 @@
         }
 
         render[settings.showEffect]();
+    /**
+     * |<------------------------------w------------------------------>|
+     * |       -----------     -----------------     -----------       |
+     * |<--l-->|   nav   |<-d->|               |<-d->| outline |<--x-->|
+     * |       |<---n--->|     |<------c------>|     |<---a--->|       |
+     * |       -----------     |               |     -----------       |
+     * |<----------m---------->|               |                       |
+     * |                       -----------------                       |
+     * -----------------------------------------------------------------
+     * (w - c) / 2 = d + a + x
+     *   => x = (w - c) / 2 - (a + d), where
+     *     w = $(window).width(),
+     *     c = $('#container').width(),
+     *     a = $('h2outline').width(),
+     *
+     * m = l + n + d
+     *   => d = m - (l + n), where
+     *     m = $('#container').position().left,
+     *     l = $('#real_nav').position().left,
+     *     n = $('#real_nav').width()
+     */
+
+        jQuery.easing['jswing'] = jQuery.easing['swing'];
+        jQuery.extend( jQuery.easing,
+        {
+            def: 'easeOutQuad',
+            swing: function (x, t, b, c, d) {
+            //alert(jQuery.easing.default);
+            return jQuery.easing[jQuery.easing.def](x, t, b, c, d);
+                },
+            easeOutQuad: function (x, t, b, c, d) {
+            return -c *(t/=d)*(t-2) + b;
+                },
+            easeOutQuint: function (x, t, b, c, d) {
+            return c*((t=t/d-1)*t*t*t*t + 1) + b;
+                }
+         });
+
+        $(window).resize(function () {
+        var w = $(window).width(),
+                c = 600,
+                a = $('#toc').width();
+                d = 40; // #real_nav has left margin of -184.8px
+                $('#toc').css('right',
+                              (w - c) / 2 - (a + d));
+            });
+        $(window).resize();
+
+        toplest=$('article').offset().top;
+        animationSpeed=1500;
+        animationEasing='easeOutQuint';       
+        $(window).scroll(function(){ 
+
+            var scrollAmount=$(document).scrollTop();
+            var newPosition=toplest+scrollAmount;
+            $('#toc').stop().animate({top: newPosition}, animationSpeed, animationEasing);
+            $('#toc').css("top",newPosition)
+        });
     };
 })(jQuery);
