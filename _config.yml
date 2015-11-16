@@ -8,7 +8,7 @@ author: Keyring
 email: keyrings@163.com | zkeyring@gmail.com
 duoshuo: keyring
 github: keyring
-highlighter: true
+pygments: true
 safe: true
 paginate: 20
 truncate: 100
