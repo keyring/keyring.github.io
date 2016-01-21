@@ -12,6 +12,8 @@ comments: no
 
 ![](/image/app_thirteen.png)
 
+[![](/image/AppStore.svg)](https://itunes.apple.com/us/app/thirteen!/id1072124511?ls=1&mt=8)
+
 ------------
 ###Contact
 
