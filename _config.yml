@@ -5,7 +5,8 @@ permalink: /:title/
 url: http://www.photoneray.com
 name: Photone Ray
 author: Keyring
-email: keyrings@163.com | zkeyring@gmail.com
+email1: keyrings@163.com
+email2: zkeyring@gmail.com
 duoshuo: keyring
 github: keyring
 pygments: true
