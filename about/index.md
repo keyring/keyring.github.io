@@ -14,6 +14,10 @@ comments: yes
 
 [![](/image/AppStore.svg)](https://itunes.apple.com/us/app/thirteen!/id1072124511?ls=1&mt=8)
 
+
+---------------------------------
+###![RESUME](http://www.photoneray.com/resume/cv.pdf)
+
 ------------
 ###Contact
 
