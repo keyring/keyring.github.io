@@ -1,15 +1,6 @@
-markdown: kramdown
-kramdown:
-  input: GFM
-  extensions:
-    - autolink
-    - footnotes
-    - smart
-  use_coderay: true
-  syntax_highlighter: rouge
-  coderay:
-    coderay_line_numbers:  nil
-  toc_levels: "2,3" 
+markdown: redcarpet
+redcarpet:
+    extensions: ["fenced_code_blocks", "autolink", "tables", "strikethrough", "with_toc_data"]
 permalink: /:title/
 url: http://www.photoneray.com
 name: Photone Ray
