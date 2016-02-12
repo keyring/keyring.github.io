@@ -2,6 +2,7 @@ markdown: kramdown
 kramdown:
   input:  GFM
   use_coderay: true
+  toc_levels: "2,3" 
 permalink: /:title/
 url: http://www.photoneray.com
 name: Photone Ray
