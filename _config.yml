@@ -1,7 +1,14 @@
 markdown: kramdown
 kramdown:
-  input:  GFM
+  input: GFM
+  extensions:
+    - autolink
+    - footnotes
+    - smart
   use_coderay: true
+  syntax_highlighter: rouge
+  coderay:
+    coderay_line_numbers:  nil
   toc_levels: "2,3" 
 permalink: /:title/
 url: http://www.photoneray.com
@@ -16,3 +23,6 @@ safe: true
 paginate: 20
 truncate: 100
 about: "圈钥匙的钥匙圈·思维停靠的港湾"
+
+
+          
