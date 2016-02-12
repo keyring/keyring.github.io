@@ -1,6 +1,7 @@
-markdown: redcarpet
-redcarpet:
-    extensions: ["fenced_code_blocks", "autolink", "tables", "strikethrough", "with_toc_data"]
+markdown: kramdown
+kramdown:
+  input:  GFM
+  use_coderay: true
 permalink: /:title/
 url: http://www.photoneray.com
 name: Photone Ray
