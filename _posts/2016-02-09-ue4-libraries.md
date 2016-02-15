@@ -15,8 +15,7 @@ UE4里面有大量游戏开发相关的C++库，但在如此庞大的代码工�
 -----------------------------------
 ###通用容器###
 
-**TARRAY**
-
+**TARRAY** 
 *(Engine\Source\Runtime\Core\Public\Containers\Array.h)*
 
 **TArray**是个模板动态数组，最通用最易用的UE4容器。拥有你所期望的所有动态数组特性和完备的`UPROPERTY`支持。并且，其API额外提供了将TArray看作栈或者堆的泛型支持。
@@ -25,8 +24,7 @@ TArray可以声明为`UPROPERTY`，意味着其能显示在编辑器的属性窗
 
 如果你之前常用C++标准库里的`vector`类，**TArray**可取而代之。
 
-**TSET**
-
+**TSET** 
 *(Engine\Source\Runtime\Core\Public\Containers\Set.h)*
 
 **TSet**是对数学上**集合**这个概念的模板实现，提供必备的集合运算，比如交集、并集、差集和快速查询元素是否存在某集合（PeopleWhoLoveTSet.Contains(Me);）
@@ -36,8 +34,7 @@ TArray可以声明为`UPROPERTY`，意味着其能显示在编辑器的属性窗
 TSet与STL里的`set`类相似，但UE4的实现基于哈希。如果你创建了一个新类型，且需要用在TSet（或TMap）里，那必须实现一个简单的函数来哈希这个类型：` uint32 GetTypeHash(const YourType& TypeVar) `。可以参考代码库里大量的示例。
 
 
-**TMAP**
-
+**TMAP** 
 *(Engine\Source\Runtime\Core\Public\Containers\Map.h)*
 
 **TMap**是种数据结构模板，允许一种类型映射另一种（键-值对），具有快速添加、移除、查找元素的特点。在有些语言里，TMap结构也叫`字典（dictionary）`。
