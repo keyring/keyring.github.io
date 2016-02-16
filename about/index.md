@@ -16,7 +16,9 @@ comments: yes
 
 
 ---------------------------------
-###![RESUME](http://www.photoneray.com/resume/cv.pdf)
+###RESUME
+
+![RESUME](../resume/cv.pdf)
 
 ------------
 ###Contact
