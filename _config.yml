@@ -1,6 +1,7 @@
-markdown: redcarpet
-redcarpet:
-    extensions: ["fenced_code_blocks", "autolink", "tables", "strikethrough", "with_toc_data"]
+markdown: kramdown
+kramdown:
+    input: GFM
+    syntax_highlighter: rouge
 permalink: /:title/
 url: http://www.photoneray.com
 name: Photone Ray
@@ -9,11 +10,7 @@ email1: keyrings@163.com
 email2: zkeyring@gmail.com
 duoshuo: keyring
 github: keyring
-pygments: true
 safe: true
 paginate: 20
 truncate: 100
 about: "圈钥匙的钥匙圈·思维停靠的港湾"
-
-
-          
