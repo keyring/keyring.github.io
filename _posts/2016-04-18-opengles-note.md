@@ -23,11 +23,24 @@ tags: note
 
 
 
-
+---------------------------------------------
 ## GLSL
 
 - **uniform**：host传递给着色器的只读值，存储于常量空间，被顶点着色器和片段着色器共享。
 - **attribute**：host传递的顶点属性，也是只读值，且只能用于顶点着色器，比如顶点位置、颜色和贴图坐标之类的属性值。
 - **varying**：VS的输出，FS的输入；用于VS向FS传递数据，须在两个shader中有一样的声明。
+- VS内置变量：`gl_Position`,`gl_PointSize`,`gl_FrontFacing`。
+- **gl_Position**：输出顶点的裁剪空间坐标，用于裁剪空间转屏幕空间。是`highp`精度的浮点数。
+- **gl_PointSize**：指定point sprite的像素大小。是`mediump`精度的浮点数。
+- **glFrontFacing**：这个变量不会在VS里直接赋值。是根据VS生成的position值和渲染的图元类型自动决定的。是个boolean值。
+- 默认`float`和`int`的精度都是**highp**。一般在VS里都是用默认的高精度。
+- `for`循环里面的索引，不能在循环体里面变化，只能在for()里面。而`while`和`do-while`虽然属于规范，但不一定实现了。
 
+
+
+
+
+
+
+-----------------------------------
 ## Think
