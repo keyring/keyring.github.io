@@ -20,6 +20,7 @@ tags: note
 - OpenGLES三图元：triangle，line，point。相关绘制模式：**GL_POINTS GL_LINES GL_LINE_STRIP GL_LINE_LOOP GL_TRIANGLES GL_TRIANGLE_STRIP GL_TRIANGLE_FAN**。
 - OpenGLES图元绘制两方法：**glDrawArrays** 和 **glDrawElements**。
 - 别废话了，能用VBO就赶紧上，能用`glDrawElements`就别用`glDrawArrays`。
+- **glPixelStorei**设置的打包/解包对齐参数是全局状态，不只是作用某个单独的纹理对象。
 
 
 
