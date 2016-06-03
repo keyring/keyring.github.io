@@ -8,19 +8,14 @@
     <link href="/feed/" rel="alternate" title="{{ site.author }}" type="application/atom+xml" />
     <link rel="stylesheet" href="/media/css/style.css" />
     <script type="text/javascript" src="/media/js/jquery-1.7.1.min.js"></script>
-    <script type="text/javascript" src="/media/js/toc.js"></script>
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/retina.js/1.3.0/retina.min.js"></script>
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/monokai_sublime.min.css">
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
-    <script type="text/javascript"> hljs.initHighlightingOnLoad(); </script>
   </head>
-  
+
     <script type="text/javascript">
     function setTimeSpan(){
             var date = new Date();
             timeSpan.innerText=date.format('yyyy-MM-dd hh:mm:ss');
     }
-    
+
     Date.prototype.format = function(format)
                 {
     var o =
@@ -60,9 +55,9 @@
         <span><a title="我的简历" class="" href="/resume/cv.pdf">RESUME</a></span>
         <span><a title="种子订阅" class="" href="/feed/" target="_blank">RSS</a></span>
         </nav>
-        
+
         <article class="content">
-        
+
         {{ content }}
 
         </article>
@@ -80,12 +75,7 @@
 {% endif %}
          </small></p>
     </footer>
-    
+
     </div>
-    <script type="text/javascript">
-    // $(document).ready(function() {
-    //     $('#toc').toc();
-    // });
-    </script>
   </body>
 </html>
