@@ -1,7 +1,4 @@
 markdown: kramdown
-kramdown:
-    input: GFM
-    syntax_highlighter: rouge
 permalink: /:title/
 url: http://www.photoneray.com
 name: Photone Ray
