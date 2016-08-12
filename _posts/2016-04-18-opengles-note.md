@@ -70,9 +70,12 @@ tags: note
 - 对drawcall排序可以有效降低状态切换的次数。可以遵循下面的排序规则：
 
 ```
+
 1、按 render target 排序：RT之间的切换消耗太高，一般不要做这种事（调用 `glBindFramebuffer、glFramebuffer*）。如果一个对象需要使用多种program在多个RT上绘制，那顺序肯定是先在program之间切换，在切换RT（逐个RT绘制过去）；
 2、按 program 排序：同一个frame buffer里面，尽量降低program的切换。假设一个场景三个物体，两个使用相同的FS，肯定是这两个物体挨着渲染较好；
 3、其他：比如纹理切换，顶点数据变化之类的。
+
+```
 
 
 
