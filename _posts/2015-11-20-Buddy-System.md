@@ -11,7 +11,8 @@ tags: note
 
 
 ------------------------
-###buddy2.h
+
+### buddy2.h
 
 ```c
 /*   buddy2.h   */
@@ -36,7 +37,8 @@ void buddy2_dump(struct buddy2* self);
 ```
 
 --------------------------------
-###buddy2.c
+
+### buddy2.c
 
 ```c
 /*   buddy2.c   */
