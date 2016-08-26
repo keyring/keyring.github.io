@@ -9,11 +9,14 @@ tags: note
 UE4里面有大量游戏开发相关的C++库，但在如此庞大的代码工程里直接查阅也不是那么简单。这里挑一些常用且值得掌握的介绍一下。要知晓详情，可以查阅[API文档](https://docs.unrealengine.com/latest/INT/API/index.html)里面的`Core`这部分。
 
 --------------------------
-##容器##
+
+## 容器 ##
+
 为了满足合适的存储需求，UE4提供了繁多的容器类，其中很多是直接照搬的C++标准库。所以啊，没啥令人兴奋的。
 
 -----------------------------------
-###通用容器###
+
+### 通用容器 ###
 
 **TARRAY** 
 *(Engine\Source\Runtime\Core\Public\Containers\Array.h)*
@@ -45,7 +48,8 @@ TMap与STL库的`map`相比，UE4基于哈希算法实现。
 
 
 ------------------------------
-###迭代器###
+
+### 迭代器 ###
 
 UE4的容器提供迭代器支持，但用法与STL里的**不**完全相同。你可以逐个查阅容器类，了解各自支持的迭代器。当然，通用的const和非const迭代器肯定是支持滴。
 
@@ -76,7 +80,8 @@ for (auto FileIt = Files.CreateConstIterator(); FileIt; ++FileIt)
 
 
 ------------------
-###排序
+
+### 排序
 
 除了默认的排序选项外，UE4容器排序也允许自定义排序规则。
 
@@ -105,13 +110,15 @@ Notifies.Sort(FCompareFAnimNotifyEvent());
 ```
 
 ------------------------------
-###其他容器
+
+### 其他容器
 
 **TArray**、**TSet**、**TMap**是UE4中最常用的容器，但不是仅有的！如果想翻源码瞧瞧所有的容器，可查阅`Engine\Source\Runtime\Core\Public\Containers`代码目录。
 
 
 ---------------------------------------
-##字符串处理
+
+## 字符串处理
 
 *(Engine\Source\Runtime\Core\Public\Containers\UnrealString.h)*
 
@@ -123,7 +130,8 @@ UE4为字符串交互提供了三种不同的类：**FString**、**FName**、**F
 
 
 ----------------------
-##数学计算
+
+## 数学计算
 
 *(Engine\Source\Runtime\Core\Public\Math\UnrealMathUtility.h)*
 
@@ -133,13 +141,15 @@ UE4为字符串交互提供了三种不同的类：**FString**、**FName**、**F
 
 
 ---------------------------------------
-##结语
+
+## 结语
 
 希望这篇简单的常用库介绍对你了解UE4有所帮助。不可否认，这些只是皮毛，所幸UE4已然完全开源，其博大精深之处还需细细专研品味。有兴趣交流的可以多联系，还望不吝赐教。
 
 
 ----------------------
-##参阅
+
+## 参阅
 
 - [UE4 Blog](https://www.unrealengine.com/blog/ue4-libraries-you-should-know-about)
 - 《Learning C++ by Creating Games with UE4》

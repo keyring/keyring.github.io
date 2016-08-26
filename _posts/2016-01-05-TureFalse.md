@@ -10,7 +10,8 @@ tags: note
 
 
 ----------------
-##Mine
+
+## Mine
 
 - cocos2dx是给程序员用的，unity是给程序员和美工用的，unreal是给游戏设计师用的。不同的使用对象说明了各自的进化程度。cocos推出creator是在向unity这层进化。unity的各类功能插件就是向unreal这层进化。
 
@@ -24,4 +25,5 @@ tags: note
 
 
 ------------------
-##Others
+
+## Others
