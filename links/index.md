@@ -14,5 +14,5 @@ comments: yes
 - [The Implementation of Rewind in Braid](http://www.gdcvault.com/play/1012210/The-Implementation-of-Rewind-in) 《时空幻境》中时光倒流的实现方案
 - [Padrões de Projeto em Games – Memento](http://abrindoojogo.com.br/padroes-de-projeto-memento) 时光倒流设计模式，还有相应的[游戏示例](http://abrindoojogo.com.br/files/fasteroids.swf)
 - [handmade](https://hero.handmade.network/episodes) 真正的从零开始写游戏，从C语言到引擎到完整的游戏。
-- [Game Art Tricks](https://simonschreibt.de/game-art-tricks/) 游戏开发中的各种技巧，比如D2里面纯2D实现的3D透视效果。还有对应的[]中文翻译版](http://qiankanglai.me/)
+- [Game Art Tricks](https://simonschreibt.de/game-art-tricks/) 游戏开发中的各种技巧，比如D2里面纯2D实现的3D透视效果。还有对应的[中文翻译版](http://qiankanglai.me/)
 
