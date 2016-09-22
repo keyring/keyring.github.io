@@ -1,4 +1,5 @@
 markdown: kramdown
+highlighter: rouge
 permalink: /:title/
 url: http://www.photoneray.com
 name: Photone Ray
