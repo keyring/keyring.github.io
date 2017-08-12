@@ -67,7 +67,7 @@
             anchorcolor = linkcolor]{hyperref}
 % Using verdana font
 \renewcommand{\rmdefault}{pag} %PDFLatex Verdana
-\setmainfont{Liberation Sans} %Xelatex 
+\setmainfont{Arial} %Xelatex 
 
 % Remove page numbers
 \pagestyle{empty} 
@@ -230,13 +230,12 @@
 }
 
 
-\newcommand{\achievements}[5]{
+\newcommand{\achievements}[4]{
    \small\begin{itemize}%
        \item [\NinjaIcon] #1%
        \IfEmptyTF{#2}{}{\item [\NinjaIcon] #2}%
        \IfEmptyTF{#3}{}{\item [\NinjaIcon] #3}%
        \IfEmptyTF{#4}{}{\item [\NinjaIcon] #4}%
-       \IfEmptyTF{#5}{}{\item [\NinjaIcon] #5}%
      \end{itemize}
 }
 
