@@ -171,7 +171,7 @@
 
 %Subtitles
 \titleformat{\subsection}
-{\large\scshape\raggedright}
+{\Large\scshape\raggedright}
 {}{0em}
 {}
 
