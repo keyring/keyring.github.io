@@ -2,7 +2,7 @@
 % http://www.latextemplates.com/template/friggeri-resume-cv
 % Must be compiled using XeLatex (FontAwesome)
 
-\LoadClass[12pt]{article}
+\LoadClass[a4paper]{article}
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{rvca}[2014/05/04 RVCA CV class]
 
@@ -151,14 +151,14 @@
 
 \titleformat{\section}         % Customise the \section command 
 {\color{titlecolor}\Large\raggedright\bfseries}   % Make the \section headers large (\Large),
-                               % small capitals (\scshape) and left aligned (\raggedright)
+                               % normalsize capitals (\scshape) and left aligned (\raggedright)
 {}{0em}                        % Can be used to give a prefix to all sections, like 'Section ...'
 {\uppercase}                             % Can be used to insert code before the heading
 [\color{titlecolor}{\titlerule[3pt]}] % Inserts a horizontal line after the heading
 
 %Subtitles  
 \titleformat{\subsection}
-{\large\scshape\raggedright}
+{\Large\scshape\raggedright}
 {}{0em}
 {}
 
@@ -177,7 +177,7 @@
 
 %Subsubtitles
 \titleformat{\subsubsection}
-{\normalsize\raggedright}
+{\large\raggedright}
 {}{0em}
 {}
 
@@ -209,8 +209,8 @@
   \subsection[#1]{#1 \hfill #2}%
    \subsubsection {#3}%
   \ifthenelse{\@full=1}{%
-    {\small #4}%
-    {\small
+    {\normalsize #4}%
+    {\normalsize
      \begin{itemize}%
        \item #5%
        \IfEmptyTF{#6}{}{\item #6}%
@@ -225,13 +225,13 @@
   \subsection[#1]{#1 \hfill #2}%
    \subsubsection {#3}%
   \ifthenelse{\@full=1}{%
-    {\small #4}%
+    {\normalsize #4}%
   }{}%
 }
 
 
 \newcommand{\achievements}[4]{
-   \small\begin{itemize}%
+   \normalsize\begin{itemize}%
        \item [\NinjaIcon] #1%
        \IfEmptyTF{#2}{}{\item [\NinjaIcon] #2}%
        \IfEmptyTF{#3}{}{\item [\NinjaIcon] #3}%

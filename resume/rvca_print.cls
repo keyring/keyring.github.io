@@ -2,9 +2,10 @@
 % http://www.latextemplates.com/template/friggeri-resume-cv
 % Must be compiled using XeLatex (FontAwesome)
 
-\LoadClass[12pt]{article}
+\LoadClass[a4paper]{article}
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{rvca_print}[2014/05/04 RVCA CV class]
+
 
 %% Options, full prints out full work items
 \newcommand{\@full}{0}
@@ -69,7 +70,7 @@
             anchorcolor = linkcolor]{hyperref}
 % Using verdana font
 \renewcommand{\rmdefault}{pag} %PDFLatex Verdana
-\setmainfont{Liberation Sans} %Xelatex 
+\setmainfont{Arial} %Xelatex 
 
 % Remove page numbers
 \pagestyle{empty} 
@@ -93,7 +94,7 @@
     };
     \node [anchor=south] at (box.south) {
       \fontsize{14pt}{24pt}\color{sidebandtextcolor}\selectfont #3
-      %\large \color{white} #3
+      %\LARGE \color{white} #3
     };
   \end{tikzpicture}
   \vspace{2.5cm}
@@ -112,6 +113,7 @@
       %Draw side band
       \begin{tikzpicture}[remember picture,overlay]
 	\node [rectangle, fill=sidebandcolor, anchor=west, minimum width=5.5cm, minimum height=\paperheight] (box) at (current page.west){};
+  \draw [dashed, draw=sidebandtextcolor, anchor=east](box.north east) -- (box.south east);
       \end{tikzpicture}
       \let\oldsection\section
       \renewcommand{\section}[1]{
@@ -152,15 +154,15 @@
 %%%
 
 \titleformat{\section}         % Customise the \section command 
-{\color{titlecolor}\Large\raggedright\bfseries}   % Make the \section headers large (\Large),
-                               % small capitals (\scshape) and left aligned (\raggedright)
+{\color{titlecolor}\Large\raggedright\bfseries}   % Make the \section headers LARGE (\Large),
+                               % normalsize capitals (\scshape) and left aligned (\raggedright)
 {}{0em}                        % Can be used to give a prefix to all sections, like 'Section ...'
 {\uppercase}                             % Can be used to insert code before the heading
 [\color{titlecolor}{\titlerule[3pt]}] % Inserts a horizontal line after the heading
 
 %Subtitles  
 \titleformat{\subsection}
-{\large\scshape\raggedright}
+{\Large\scshape\raggedright}
 {}{0em}
 {}
 
@@ -173,13 +175,13 @@
 
 %Subtitles
 \titleformat{\subsection}
-{\large\scshape\raggedright}
+{\Large\scshape\raggedright}
 {}{0em}
 {}
 
 %Subsubtitles
 \titleformat{\subsubsection}
-{\normalsize\raggedright}
+{\large\raggedright}
 {}{0em}
 {}
 
@@ -211,8 +213,8 @@
   \subsection[#1]{#1 \hfill #2}%
    \subsubsection {#3}%
   \ifthenelse{\@full=1}{%
-    {\small #4}%
-    {\small
+    {\normalsize #4}%
+    {\normalsize
      \begin{itemize}%
        \item #5%
        \IfEmptyTF{#6}{}{\item #6}%
@@ -227,18 +229,17 @@
   \subsection[#1]{#1 \hfill #2}%
    \subsubsection {#3}%
   \ifthenelse{\@full=1}{%
-    {\small #4}%
+    {\normalsize #4}%
   }{}%
 }
 
 
-\newcommand{\achievements}[5]{
-   \small\begin{itemize}%
+\newcommand{\achievements}[4]{
+   \normalsize\begin{itemize}%
        \item [\NinjaIcon] #1%
        \IfEmptyTF{#2}{}{\item [\NinjaIcon] #2}%
        \IfEmptyTF{#3}{}{\item [\NinjaIcon] #3}%
        \IfEmptyTF{#4}{}{\item [\NinjaIcon] #4}%
-       \IfEmptyTF{#5}{}{\item [\NinjaIcon] #5}%
      \end{itemize}
 }
 
