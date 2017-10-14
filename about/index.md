@@ -8,20 +8,15 @@ comments: yes
 
 ----
 
-###PRODUCT
+### PRODUCT
 
 ![](/image/app_thirteen.png)
 
 [![](/image/AppStore.svg)](https://itunes.apple.com/us/app/thirteen!/id1072124511?ls=1&mt=8)
 
 
----------------------------------
-###RESUME
-
-![RESUME](../resume/cv.pdf)
-
 ------------
-###Contact
+### Contact
 
 {% if site.qq %}
 ＱＱ：[{{ site.qq }}](tencent://message/?uin={{ site.qq }})
