@@ -2,7 +2,7 @@
 data: 2017-5-12
 layout: post
 title: Bot Framework 的 Node.js 实践
-categories: DEV
+categories: Programming
 tags: DEV AI
 ---
 

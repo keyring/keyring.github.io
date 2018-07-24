@@ -2,7 +2,7 @@
 data: 2015-7-19
 layout: post
 title: 游戏编程-可扩展技能系统
-categories: Game Dev
+categories: GameDev
 tags: thinking
 ---
 

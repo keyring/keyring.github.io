@@ -2,7 +2,7 @@
 data: 2017-1-20
 layout: post
 title: 阿拉伯语数字·坑
-categories: Game Dev
+categories: GameDev
 tags: bugfix
 ---
 

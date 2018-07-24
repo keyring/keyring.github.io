@@ -2,7 +2,7 @@
 data: 2014-10-15 
 layout: post
 title: Game Dev Log
-categories: game
+categories: GameDev
 tags: game note
 ---
 
