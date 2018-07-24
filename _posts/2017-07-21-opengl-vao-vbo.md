@@ -2,8 +2,8 @@
 data: 2017-7-21
 layout: post
 title: VAO 与 VBO 的前世今生
-categories: OpenGLES
-tags: note
+categories: Graphics
+tags: note opengles
 ---
 
 在现代OpenGL（3.0+）的体系里，VAO和VBO已经是个很基本的概念了，是学习GL必须要理解的一个点。昨天，组内的同学在学习[Learn OpenGL](https://learnopengl.com/)的时候，就被这两个概念给拦住了。当然，具体遇到的问题倒不是理解障碍，实质是不清楚这几个概念的**本质**。

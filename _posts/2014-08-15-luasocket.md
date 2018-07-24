@@ -2,7 +2,7 @@
 data: 2014-8-15
 layout: post
 title: LuaSocket 初探
-categories: lua
+categories: Lua
 tags: lua note
 ---
 

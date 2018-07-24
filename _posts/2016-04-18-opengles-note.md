@@ -2,8 +2,8 @@
 data: 2016-04-18
 layout: post
 title: OpenGL ES Notes
-categories: OpenGLES
-tags: note
+categories: Graphics
+tags: opengles
 ---
 
 ## GLES API

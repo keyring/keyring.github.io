@@ -2,8 +2,8 @@
 data: 2017-1-20
 layout: post
 title: 阿拉伯语数字·坑
-categories: DEV
-tags: DEV bug
+categories: Game Dev
+tags: bugfix
 ---
 
 年前游戏做阿语的版本移植，本以为和其他语言版本一样，简单的做好翻译与UI适配即可迅速发布。结果将测试包发给沙特的测试人员后，反馈无法登录游戏。

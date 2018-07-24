@@ -2,7 +2,7 @@
 data: 2014-9-1
 layout: post
 title: cocos2dx-3.x 导入lua扩展库
-categories: lua
+categories: Lua
 tags: lua note
 ---
 

@@ -2,8 +2,8 @@
 data: 2015-11-16
 layout: post
 title: Game Optimize：降低纹理切换优化drawcall调用
-categories: optimize
-tags: optimize, game
+categories: Performance
+tags: optimize
 ---
 
 一直以来，游戏都是推动硬件更新的主要手段。其原因无非是游戏对真实性的追求永无止境，而硬件的发展始终得遵循客观物理世界。这种矛盾下的结果就是，游戏对**性能**二字异乎敏感。可以说，每一个成熟的游戏开发者最终都会与之打交道。
