@@ -34,6 +34,6 @@ Well, anyway, there isn't much difference in the Direct2D headers, between 10586
 
 在实现 **显示的图像大小实时跟着窗口大小调整***时遇到个小坑。按常理，这种逻辑只需要监听 `WM_SIZE` 消息即可。可最终发现窗口变大会触发重绘，但缩小（按住鼠标拖动边框）不松开鼠标的情况下不会重绘。这应该是与Windows的窗口无效区域有关，简言之，这种情况下系统不会发送 `WM_PAINT` 消息，也就不会触发重绘。
 
-最后在 `WM_SIZE` 的处理最后手动加上 **RedrawWindow** 强制重绘。
+最后在 `WM_SIZE` 的处理最后手动加上 **RedrawWindow** 或者 **InvalidateRect** 强制重绘。
 
 --------------------------------------------------------------
