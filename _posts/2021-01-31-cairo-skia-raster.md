@@ -11,7 +11,7 @@ Cairo 和 Skia 算是目前 2D 开源绘图库的代表。他们现在的架构�
 
 两者对 draw 的抽象差不多，分成 绘制对象（drawline/lineto ）、绘制行为（fill/strke)。这些也是直接提供给用户的 API，比较直观。而在内部，对于绘制对象，都转成了 path 来表达（cairo-path / SkPath）。然后在需要的时候根据不同的backend，将path转义为该后端接受的 图元。
 
-在内存中，都有个绘制容器（cairo-surface / SkCanvas）的东西来承载用户提交的绘图指令，然后交给不同的backend处理。比如，针对软光栅后端，cairo这边是 `cairo-image-surface`，skia这边叫 `SkBitmapDevice`。
+在内存中，都有个绘制容器（`cairo-surface` / `SkCanvas`）的东西来承载用户提交的绘图指令，然后交给不同的backend处理。比如，针对软光栅后端，cairo这边是 `cairo-image-surface`，skia这边叫 `SkBitmapDevice`。
 
 在软光栅后端里，对于真正的光栅化实现，cairo其实自己没有处理，而是交给了 **pixman** 这个像素处理的库。在 cairo-image-surface 里可以看到很多直接使用pixman的函数。而在 pixman 里，也有抽象一些 box，edge，rectangle的概念，但最重要的就是 **pixman-edge**，这里面介绍了怎么把线条变成像素（光栅化）。
 
