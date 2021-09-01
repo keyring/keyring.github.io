@@ -23,3 +23,5 @@ skia对于软光栅化是在 `SkDraw` 里实现的，统一 drawpath，然后 pa
 PS: cairo是用纯C写的，为了一些抽象和泛型，函数指针用的飞起，看的脑壳疼。相较而言，skia就好太多了。
 
 PPS：我还是不确定他们到底用了 breseham 算法没有。
+
+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
